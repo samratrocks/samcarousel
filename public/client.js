@@ -4,22 +4,17 @@
 // 1. Make everything functional abstractly
 // 2. Add the timing function
 
-
 function Carousel() {
   /*
    * Abstract Mockup
    * Rotates a bunch of abstract images in the time-space specified
-   * 
   */
+  let domNodes = document.querySelectorAll('h1')
+  let domElements = Array.prototype.slice.call(domNodes)
   
-  
-  let images = ['a', 'b', 'c', 'd']
   let currentImageIndex = 0
-  let currentImageMax = images.length - 1
-  
+  let currentImageMax = domElements.length - 1
 
-  
-  
   this.start = () => {
     this.timer.start()
   }
@@ -41,7 +36,7 @@ function Carousel() {
   this.IO = () => {
     // Note: This function will handle interaction with the outside world
     //   and this will have references to all the DOM elements.
-    console.log(images[currentImageIndex])
+    console.log(domElements[currentImageIndex])
   }
   
   this.nextAndIO = () => {
@@ -53,7 +48,6 @@ function Carousel() {
 }
 
 function SamTimer(props) {
-    
   this.secs = props.secs ? props.secs : 3
   this.func = props.func
 
@@ -73,11 +67,7 @@ function SamTimer(props) {
   
   this.notify = () => {
     //TODO: Decide what kind of notification to use
-    
     // temp
     this.func()
   }
-  
 }
-
-let s = new SamTimer({secs: 3, func: console.log})
